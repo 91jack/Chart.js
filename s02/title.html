@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>chart.js标题组件</title>
+	</head>
+	<body>
+		<!-- 为Chart 准备一个具备大小（宽高）的 DOM -->
+		<div style="width:600px;">
+			<canvas id="myChart"></canvas>
+		</div>
+		<!--引入Chart.js文件-->
+		<script src="../src/Chart.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 获取元素
+			var ctx = document.getElementById("myChart");
+
+			// 创建一个实例
+			var myChart = new Chart(ctx, {
+			    type: 'bar',
+			    data: {
+			        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+			        datasets: [{
+			            label: '# of Votes',
+			            data: [12, 19, 3, 5, 2, 3],
+			            backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(75, 192, 192, 0.2)',
+			                'rgba(153, 102, 255, 0.2)',
+			                'rgba(255, 159, 64, 0.2)'
+			            ],
+			            borderColor: [
+			                'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                'rgba(75, 192, 192, 1)',
+			                'rgba(153, 102, 255, 1)',
+			                'rgba(255, 159, 64, 1)'
+			            ],
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+					title: {
+						display: true,// 是否显示标题
+						text: "chart.js标题组件", // 标题文字
+						position: 'top', // 标题位置
+						fontSize: 20, // 标题字体大小
+						fontColor: 'blue', // 标题文字颜色
+						fontStyle: 'bold', // 标题字体样式
+						fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", // 标题文字的字体系列
+						padding: 10, // 标题内边距
+						lineHeight: 1.2, // 标题文字行高
+					},
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
+			    }
+			});
+		</script>
+	</body>
+
+</html>
+

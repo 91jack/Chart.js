@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="container">
+			<canvas id="myChart"></canvas>
+		</div>
+		
+		<script src="../src/Chart.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 第一步 获取元素
+			var ctx = document.getElementById("myChart");
+
+			// 第二步 创建实例
+			var myChart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+					datasets:[
+						{
+							label: '生产量',
+							data:[2000,3000,4000,5000,4000,6000,8000,7000,5000,2000,1000,9000],
+							backgroundColor:'#FF6384',
+							borderColor: '#FF6384',
+						}
+					]
+				},
+				options: {
+					responsive:true, // 响应式，默认开启 为 true, 如果关闭（false）,图表则为默认大小 300*150
+					responsiveAnimationDuration: 2000, // 响应式动画加载时间,在responsive为true时才有效
+					maintainAspectRatio: true, // 宽高比 默认为 2：1
+					onResize: function(myChart,size){ // 当图表大小发生改变时调用，可以传递2个参数 (chart,size)	
+						console.log(size)
+					}				
+				}
+			});
+		</script>
+	</body>
+</html>
+<!--
+	在responsive:true 时 设置 canvas的宽高 无效
+		<canvas id="myChart" width="600" height="200"></canvas>
+		<canvas id="myChart" style="width:600px;height:200px"></canvas>
+		<canvas style="height:40vh; width:80vw">
+			
+	vh/vm 是什么？
+	是在CSS3	中才引入的视口单位
+	《视区相关单位vw, vh..简介以及可实际应用场景》
+	http://www.zhangxinxu.com/wordpress/2012/09/new-viewport-relative-units-vw-vh-vm-vmin/
+	
+	
+	Chart.js使用其父容器来更新画布渲染和显示大小。
+	但是，此方法要求容器相对定位，并且只专用于图表画布。通过设置容器大小的相对值（示例）可以实现响应性：
+	<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+	    <canvas id="chart"></canvas>
+	</div>
+	
+	当然，我们也可以通过 js 动态改变容器大小
+	chart.canvas.parentNode.style.height = '128px';
+-->

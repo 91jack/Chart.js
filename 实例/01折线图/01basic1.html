@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.container {
+				width: 600px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<!--准备一个 canvas DOM 容器-->
+			<canvas id="myChart"></canvas>
+		</div>
+		
+		<!--引入 Chart.js 文件-->
+		<script src="../../src/Chart.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../utils.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 获取元素
+			var ctx = document.getElementById("myChart");
+					
+			// 创建一个实例
+			var myChart = new Chart(ctx, {
+					type: 'line',
+					data: {
+						labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+						datasets: [{
+							label: 'My First dataset',
+							backgroundColor: window.chartColors.red,
+							borderColor: window.chartColors.red,
+							data: [
+								randomScalingFactor(),
+								randomScalingFactor(),
+								randomScalingFactor(),
+								randomScalingFactor(),
+								randomScalingFactor(),
+								randomScalingFactor(),
+								randomScalingFactor()
+							],
+							fill: false,
+						}, {
+							label: 'My Second dataset',
+							fill: false,
+							backgroundColor: window.chartColors.blue,
+							borderColor: window.chartColors.blue,
+							data: [
+								randomScalingFactor(),
+								randomScalingFactor(),
+								randomScalingFactor(),
+								randomScalingFactor(),
+								randomScalingFactor(),
+								randomScalingFactor(),
+								randomScalingFactor()
+							],
+						}]
+					},
+					options: {
+						responsive: true,
+						title: {
+							display: true,
+							text: 'Chart.js Line Chart'
+						},
+						tooltips: {
+							mode: 'index',
+							intersect: false,
+						},
+						hover: {
+							mode: 'nearest',
+							intersect: true
+						},
+						scales: {
+							xAxes: [{
+								display: true,
+								scaleLabel: {
+									display: true,
+									labelString: 'Month'
+								}
+							}],
+							yAxes: [{
+								display: true,
+								scaleLabel: {
+									display: true,
+									labelString: 'Value'
+								}
+							}]
+						}
+					}
+			});
+		</script>
+	</body>
+</html>

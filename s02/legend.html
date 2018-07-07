@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>chart.js图例组件</title>
+	</head>
+	<body>
+		<!-- 为Chart 准备一个具备大小（宽高）的 DOM -->
+		<div style="width:600px;">
+			<canvas id="myChart"></canvas>
+		</div>
+		<!--引入Chart.js文件-->
+		<script src="../src/Chart.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 获取元素
+			var ctx = document.getElementById("myChart");
+
+			// 创建一个实例
+			var myChart = new Chart(ctx, {
+			    type: 'line',
+			    data: {
+			        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+			        datasets: [
+			        	{
+							label: 'My First dataset',
+							backgroundColor: 'rgb(255, 99, 132)',
+							borderColor: 'red',
+							data: [50,100,150,42,65,78],
+							fill: false
+						},
+						{
+							label: 'My Second dataset',
+							backgroundColor: 'rgb(54, 162, 235)',
+							borderColor: 'blue',
+							data: [150,100,50,12,35,48],
+							fill: false
+						},
+			        ]
+			    },
+			    options: {
+					title: {
+						display: true,// 是否显示标题
+						text: "chart.js制作可视化图表", // 标题文字
+						position: 'top', // 标题位置
+						fontSize: 20, // 标题字体大小
+						fontColor: 'blue', // 标题文字颜色
+						fontStyle: 'bold', // 标题字体样式
+						fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", // 标题文字的字体系列
+						padding: 10, // 标题内边距
+						lineHeight: 1.2, // 标题文字行高
+					},
+					legend: {
+						display: true,
+						position: 'top',
+						fullWidth: true,
+						reverse: false,
+						labels: {// 图例标签配置
+							boxWidth: 100,
+							fontSize: 12,
+							fontStyle: 'normal',
+							fontColor: '#666',
+							fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+							padding: 10,
+							generateLabels: function(){
+								
+							},
+							filter: function(){
+								
+							},
+							usePointStyle: false
+						},
+						onClick: function(){
+							
+						},
+						onHover: function(){
+							
+						}
+					},
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
+			    }
+			});
+		</script>
+	</body>
+
+</html>
+

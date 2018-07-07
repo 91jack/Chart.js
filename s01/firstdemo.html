@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!-- 为Chart 准备一个具备大小（宽高）的 DOM -->
+		<div style="width:600px;">
+			<canvas id="myChart"></canvas>
+		</div>
+		<!--引入Chart.js文件-->
+		<!--CDN地址-->
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<!--本地引用  -->
+		<script src="../src/Chart.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 获取元素
+			var ctx = document.getElementById("myChart");
+
+			// 创建一个实例
+			var myChart = new Chart(ctx, { // 创建一个实例
+				type: 'bar', // 图表类型
+				data: { // 图表数据
+					labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+					datasets: [{
+						label: '生产量',
+						data: [2000, 3000, 4000, 5000, 4000, 6000, 8000, 7000, 5000, 2000, 1000, 9000],
+						backgroundColor: '#FF6384',
+						borderColor: '#FF6384',
+					}, ]
+				},
+				options: { // 图表配置项
+					title: {
+						display: true, // 是否显示标题
+						text: '2017年度杰克工厂月度生产量'
+					},
+					scales: { // 刻度
+						yAxes: [{
+							ticks: {
+								beginAtZero: true
+							}
+						}]
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>

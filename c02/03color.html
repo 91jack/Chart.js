@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>颜色</title>
+	</head>
+	<body>
+		<div class="container">
+			<canvas id="myChart"></canvas>
+		</div>
+		
+		<script src="../lib/Chart.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 第一步 获取元素
+			var ctx = document.getElementById("myChart");
+
+			// 第二步 创建实例
+			var myChart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+					datasets:[
+						{
+							label: '生产量',
+							data:[2000,3000,4000,5000,4000,6000,8000,7000,5000,2000,1000,9000],
+							backgroundColor:'red',
+							borderColor: '#FF6384',
+						}
+					]
+				},
+				options: {
+					responsive:true, // 响应式，默认开启 为 true, 如果关闭（false）,图表则为默认大小 300*150
+					responsiveAnimationDuration: 2000, // 响应式动画加载时间,在responsive为true时才有效
+					maintainAspectRatio: true, // 宽高比 默认为 2：1
+					onResize: function(myChart,size){ // 当图表大小发生改变时调用，可以传递2个参数 (chart,size)	
+						console.log(size)
+					}				
+				}
+			});
+		</script>
+	</body>
+</html>
+<!--
+	向Chart选项提供颜色时，可以使用多种格式。
+	您可以将颜色指定为十六进制，RGB或HSL符号的字符串
+	十六进制：#FF6384
+	rgb: rgba(255, 99, 132)
+	rgba:rgba(255, 99, 132, 0.2)
+	hsl： hsl(360, 50, 50)
+	字符串：'red','blue','green'
+	
+	如果需要颜色但是又没有去自定义，图表就回去使用默认颜色。
+	默认颜色存储在Chart.defaults.global.defaultColor.它的初始值是'rgb(0,0,0,0.1)'。
+	
+	你也可以传递一个CanvasGradient对象，传递之前需先创建。
+	
+	
+	CanvasPattern 对象用在一个 Canvas 中的基于图像的模式。
+	CanvasGradient 对象用于一个画布中的一个颜色渐变
+	
+-->
